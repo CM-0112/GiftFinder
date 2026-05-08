@@ -1,22 +1,7 @@
-import type { Metadata } from "next";
-import Providers from "./providers";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Gift Finder",
-  description: "Share what you want. Gift with confidence.",
-};
-
-export default function RootLayout({
+export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  );
+  return <>{children}</>;
 }
