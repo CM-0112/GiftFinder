@@ -158,16 +158,17 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { margin: 0; }
         a { color: inherit; }
-        .mobile-only { display: none; }
+        .mobile-only { display: none !important; }
         .desktop-only { display: flex; }
         @media (max-width: 600px) {
-          .mobile-only { display: block; }
+          .mobile-only { display: block !important; }
           .desktop-only { display: none !important; }
         }
       `}</style>
     </div>
   );
 }
+
 
 
 
