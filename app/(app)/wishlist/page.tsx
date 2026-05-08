@@ -256,8 +256,20 @@ export default function WishlistPage() {
             </div>
             <div>
               <label style={labelStyle}>Price</label>
-              <input type="text" placeholder="e.g. $85" value={form.price_display}
-                onChange={e => setForm(f => ({ ...f, price_display: e.target.value }))} style={inputStyle} />
+              <div style={{ position: "relative" }}>
+                <span style={{ position: "absolute", left: "0.875rem", top: "50%", transform: "translateY(-50%)", color: "#78716C", fontSize: "0.875rem", pointerEvents: "none" }}>$</span>
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  placeholder="0.00"
+                  value={form.price_display.replace(/^\$/, "")}
+                  onChange={e => {
+                    const val = e.target.value.replace(/[^0-9.]/g, "");
+                    setForm(f => ({ ...f, price_display: val ? `$${val}` : "" }));
+                  }}
+                  style={{ ...inputStyle, paddingLeft: "1.75rem" }}
+                />
+              </div>
             </div>
             <div>
               <label style={labelStyle}>Product link</label>
