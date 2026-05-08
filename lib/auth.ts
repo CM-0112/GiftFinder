@@ -23,7 +23,6 @@ export const authOptions: NextAuthOptions = {
         .single();
 
       if (!existing) {
-        // First sign-in — temp username, user will choose their own at /setup
         const tempUsername = `user-${Date.now()}`;
         await supabase.from("users").insert({
           email: user.email,
@@ -42,7 +41,7 @@ export const authOptions: NextAuthOptions = {
       const supabase = createServiceClient();
       const { data } = await supabase
         .from("users")
-        .select("id, username, display_name, avatar_url")
+        .select("id, username, display_name, avatar_url, share_token")
         .eq("email", session.user.email)
         .single();
 
@@ -54,6 +53,7 @@ export const authOptions: NextAuthOptions = {
           username: data.username,
           display_name: data.display_name,
           avatar_url: data.avatar_url,
+          share_token: data.share_token,
           needsSetup: data.username.startsWith("user-"),
         };
       }

@@ -39,7 +39,9 @@ export default function WishlistPage() {
 
   // @ts-ignore
   const username = session?.user?.username ?? "";
-  const profileUrl = typeof window !== "undefined" ? `${window.location.origin}/${username}` : "";
+  // @ts-ignore
+  const shareToken = session?.user?.share_token ?? "";
+  const shareUrl = typeof window !== "undefined" && shareToken ? `${window.location.origin}/share/${shareToken}` : "";
 
   useEffect(() => {
     if (username) fetchItems();
@@ -126,7 +128,7 @@ export default function WishlistPage() {
   }
 
   async function copyProfileUrl() {
-    await navigator.clipboard.writeText(profileUrl);
+    await navigator.clipboard.writeText(shareUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -414,3 +416,4 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
