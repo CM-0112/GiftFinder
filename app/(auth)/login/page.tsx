@@ -12,121 +12,135 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "#F7F4EF",
-      display: "flex",
-      flexDirection: "column",
-      fontFamily: "'DM Sans', sans-serif",
-    }}>
+    <div style={{ minHeight: "100vh", background: "#F7F4EF", fontFamily: "'DM Sans', sans-serif" }}>
 
-      {/* Top dark panel */}
-      <div style={{
-        background: "#1C1917",
-        padding: "2.5rem 2rem 3rem",
-        position: "relative",
-        overflow: "hidden",
-      }}>
-        {/* Decorative circles */}
-        <div style={{ position: "absolute", width: "400px", height: "400px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)", top: "-150px", right: "-100px" }}/>
-        <div style={{ position: "absolute", width: "250px", height: "250px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)", top: "-80px", right: "-40px" }}/>
+      {/* Desktop: two column. Mobile: stacked */}
+      <div className="login-container">
 
-        {/* Logo */}
-        <div style={{ position: "relative", zIndex: 1, marginBottom: "2rem" }}>
-          <span style={{ fontSize: "1rem", color: "#E8DDD0", letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
-            ✦ Gift Finder
-          </span>
-        </div>
+        {/* Left / Top dark panel */}
+        <div className="login-left">
+          <div style={{ position: "absolute", width: "500px", height: "500px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)", top: "-150px", right: "-150px" }}/>
+          <div style={{ position: "absolute", width: "300px", height: "300px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)", top: "-80px", right: "-60px" }}/>
+          <div style={{ position: "absolute", width: "400px", height: "400px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.04)", bottom: "-150px", left: "-80px" }}/>
 
-        {/* Headline */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <p style={{ fontSize: "0.8rem", color: "#8B7355", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1rem" }}>
-            The art of gifting
-          </p>
-          <h1 style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: "clamp(2rem, 8vw, 3rem)",
-            color: "#F7F4EF",
-            lineHeight: 1.15,
-            margin: 0,
-            fontWeight: 400,
-          }}>
-            Tell the people<br />
-            who love you<br />
-            <em style={{ color: "#C4A882" }}>what you want.</em>
-          </h1>
-        </div>
-      </div>
-
-      {/* Bottom sign-in panel */}
-      <div style={{
-        flex: 1,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        padding: "2.5rem 2rem",
-      }}>
-        <div style={{ maxWidth: "400px", width: "100%" }}>
-
-          {/* Gift icon */}
-          <div style={{
-            width: "52px", height: "52px", background: "#1C1917", borderRadius: "14px",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            marginBottom: "1.75rem", fontSize: "1.4rem",
-          }}>
-            🎁
+          <div style={{ position: "relative", zIndex: 1, marginBottom: "auto" }}>
+            <span style={{ fontSize: "1rem", color: "#E8DDD0", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
+              ✦ Gift Finder
+            </span>
           </div>
 
-          <h2 style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: "1.75rem", color: "#1C1917", margin: "0 0 0.4rem", fontWeight: 400,
-          }}>
-            Welcome back
-          </h2>
-          <p style={{ color: "#78716C", fontSize: "0.9rem", margin: "0 0 2rem", lineHeight: 1.6 }}>
-            Sign in to manage your wishlist or browse a friend's.
-          </p>
-
-          <button
-            onClick={handleSignIn}
-            disabled={loading}
-            style={{
-              width: "100%", padding: "0.9rem 1.5rem",
-              background: loading ? "#D6CFC8" : "#1C1917",
-              color: "#F7F4EF", border: "none", borderRadius: "12px",
-              fontSize: "0.95rem", fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
-              cursor: loading ? "not-allowed" : "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem",
-            }}
-          >
-            {loading ? (
-              <span style={{ opacity: 0.7 }}>Signing in...</span>
-            ) : (
-              <>
-                <GoogleIcon />
-                Continue with Google
-              </>
-            )}
-          </button>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem", margin: "1.5rem 0" }}>
-            <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
-            <span style={{ fontSize: "0.8rem", color: "#A8A29E" }}>or</span>
-            <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
+          <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <p style={{ fontSize: "0.8rem", color: "#8B7355", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
+              The art of gifting
+            </p>
+            <h1 style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              color: "#F7F4EF", lineHeight: 1.1, margin: 0, fontWeight: 400,
+            }}>
+              Tell the people<br />
+              who love you<br />
+              <em style={{ color: "#C4A882" }}>what you want.</em>
+            </h1>
           </div>
 
-          <p style={{ fontSize: "0.78rem", color: "#A8A29E", textAlign: "center", lineHeight: 1.6, margin: 0 }}>
-            By continuing, you agree to our{" "}
-            <a href="#" style={{ color: "#78716C", textDecoration: "underline" }}>Terms</a>
-            {" "}and{" "}
-            <a href="#" style={{ color: "#78716C", textDecoration: "underline" }}>Privacy Policy</a>.
-          </p>
+          <div style={{ position: "relative", zIndex: 1, marginTop: "auto" }}>
+            <p style={{ color: "#5C5048", fontSize: "0.875rem", lineHeight: 1.7, margin: 0 }}>
+              Share your wishlist with the people who matter.<br />
+              No more guessing. No more duplicate gifts.
+            </p>
+          </div>
+        </div>
+
+        {/* Right / Bottom sign-in panel */}
+        <div className="login-right">
+          <div style={{ width: "100%", maxWidth: "360px" }}>
+            <div style={{ width: "52px", height: "52px", background: "#1C1917", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.75rem", fontSize: "1.4rem" }}>
+              🎁
+            </div>
+            <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.85rem", color: "#1C1917", margin: "0 0 0.4rem", fontWeight: 400 }}>
+              Welcome back
+            </h2>
+            <p style={{ color: "#78716C", fontSize: "0.9rem", margin: "0 0 2rem", lineHeight: 1.6 }}>
+              Sign in to manage your wishlist or browse a friend's.
+            </p>
+            <button
+              onClick={handleSignIn}
+              disabled={loading}
+              style={{
+                width: "100%", padding: "0.9rem 1.5rem",
+                background: loading ? "#D6CFC8" : "#1C1917",
+                color: "#F7F4EF", border: "none", borderRadius: "12px",
+                fontSize: "0.95rem", fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
+                cursor: loading ? "not-allowed" : "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem",
+              }}
+            >
+              {loading ? <span style={{ opacity: 0.7 }}>Signing in...</span> : <><GoogleIcon />Continue with Google</>}
+            </button>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", margin: "1.5rem 0" }}>
+              <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
+              <span style={{ fontSize: "0.8rem", color: "#A8A29E" }}>or</span>
+              <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
+            </div>
+            <p style={{ fontSize: "0.78rem", color: "#A8A29E", textAlign: "center", lineHeight: 1.6, margin: 0 }}>
+              By continuing, you agree to our{" "}
+              <a href="#" style={{ color: "#78716C", textDecoration: "underline" }}>Terms</a>{" "}and{" "}
+              <a href="#" style={{ color: "#78716C", textDecoration: "underline" }}>Privacy Policy</a>.
+            </p>
+          </div>
         </div>
       </div>
 
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { margin: 0; }
+
+        .login-container {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: row;
+        }
+
+        .login-left {
+          flex: 0 0 52%;
+          background: #1C1917;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 3rem;
+          position: relative;
+          overflow: hidden;
+          min-height: 100vh;
+        }
+
+        .login-right {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 3rem 2rem;
+        }
+
+        @media (max-width: 680px) {
+          .login-container {
+            flex-direction: column;
+          }
+          .login-left {
+            flex: none;
+            min-height: auto;
+            padding: 2.5rem 1.5rem 3rem;
+          }
+          .login-left > div:last-child {
+            display: none;
+          }
+          .login-right {
+            flex: 1;
+            align-items: flex-start;
+            padding: 2.5rem 1.5rem;
+          }
+        }
       `}</style>
     </div>
   );
@@ -142,4 +156,5 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
