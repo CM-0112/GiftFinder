@@ -51,12 +51,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <button
             className="mobile-only"
             onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ background: "none", border: "none", cursor: "pointer", padding: "0.4rem", display: "flex", flexDirection: "column", gap: "5px", flexShrink: 0 }}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: "0.4rem", flexShrink: 0, lineHeight: 1 }}
             aria-label="Menu"
           >
-            <span style={{ display: "block", width: "20px", height: "1.5px", background: "#57534E" }}/>
-            <span style={{ display: "block", width: "20px", height: "1.5px", background: "#57534E" }}/>
-            <span style={{ display: "block", width: "20px", height: "1.5px", background: "#57534E" }}/>
+            <div style={{ width: "20px", height: "2px", background: "#57534E", marginBottom: "5px", borderRadius: "1px" }}/>
+            <div style={{ width: "20px", height: "2px", background: "#57534E", marginBottom: "5px", borderRadius: "1px" }}/>
+            <div style={{ width: "20px", height: "2px", background: "#57534E", borderRadius: "1px" }}/>
           </button>
 
           {/* Logo */}
@@ -168,6 +168,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
 
 
 
