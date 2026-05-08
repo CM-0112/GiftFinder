@@ -108,10 +108,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "#A8A29E", margin: 0 }}>Signed in as</p>
                   <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.825rem", color: "#1C1917", fontWeight: 500, margin: "2px 0 0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{session.user?.email}</p>
                 </div>
-                <Link href={`/${username}`} onClick={() => setMenuOpen(false)}
-                  style={{ display: "block", padding: "0.65rem 1rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "#1C1917", textDecoration: "none" }}>
-                  View my profile
-                </Link>
                 <button onClick={() => { setMenuOpen(false); signOut({ callbackUrl: "/login" }); }}
                   style={{ display: "block", width: "100%", textAlign: "left", padding: "0.65rem 1rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "#DC2626", background: "none", border: "none", borderTop: "1px solid #F0EBE3", cursor: "pointer" }}>
                   Sign out
@@ -142,10 +138,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 </Link>
               );
             })}
-            <Link href={`/${username}`} onClick={() => setMobileOpen(false)}
-              style={{ display: "block", padding: "0.9rem 1.25rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem", color: "#57534E", textDecoration: "none", borderBottom: "1px solid #F5F0EB" }}>
-              View my profile
-            </Link>
             <button onClick={() => { setMobileOpen(false); signOut({ callbackUrl: "/login" }); }}
               style={{ display: "block", width: "100%", textAlign: "left", padding: "0.9rem 1.25rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem", color: "#DC2626", background: "none", border: "none", cursor: "pointer" }}>
               Sign out
@@ -176,6 +168,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
 
 
 

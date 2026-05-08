@@ -56,7 +56,7 @@ export default function GiftsGivingPage() {
   }, {} as Record<string, { owner: ClaimedItem["owner"]; items: ClaimedItem[] }>);
 
   return (
-    <div style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "640px" }}>
+    <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
 
       {/* Header */}
       <div style={{ marginBottom: "2.5rem" }}>
@@ -209,3 +209,4 @@ export default function GiftsGivingPage() {
     </div>
   );
 }
+
