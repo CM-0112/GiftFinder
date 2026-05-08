@@ -35,44 +35,87 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const navLinks = [
     { href: "/wishlist", label: "My Wishlist" },
     { href: "/connections", label: "Connections" },
+    { href: "/gifts-giving", label: "Gifts I'm Giving" },
   ];
 
   return (
     <div style={{ minHeight: "100vh", background: "#F7F4EF" }}>
-      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(247, 244, 239, 0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E5E0D8" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1rem", height: "56px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
+      <nav style={{
+        position: "sticky", top: 0, zIndex: 50,
+        background: "rgba(247, 244, 239, 0.92)",
+        backdropFilter: "blur(12px)",
+        borderBottom: "1px solid #E5E0D8",
+      }}>
+        <div style={{
+          maxWidth: "1100px", margin: "0 auto",
+          padding: "0 1rem",
+          height: "56px",
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          gap: "0.5rem",
+        }}>
 
+          {/* Logo */}
           <Link href="/wishlist" style={{ textDecoration: "none", flexShrink: 0 }}>
-            <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.1rem", color: "#1C1917" }}>
+            <span style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "1.1rem", color: "#1C1917",
+            }}>
               ✦ Gift Finder
             </span>
           </Link>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }} className="desktop-nav">
+          {/* Nav links — hidden on mobile, shown on desktop */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
+            className="desktop-nav">
             {navLinks.map(link => {
               const active = pathname.startsWith(link.href);
               return (
-                <Link key={link.href} href={link.href} style={{ textDecoration: "none", fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", fontWeight: active ? 500 : 400, color: active ? "#1C1917" : "#78716C", padding: "0.4rem 0.75rem", borderRadius: "8px", background: active ? "#EDE8E0" : "transparent" }}>
+                <Link key={link.href} href={link.href} style={{
+                  textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.875rem", fontWeight: active ? 500 : 400,
+                  color: active ? "#1C1917" : "#78716C",
+                  padding: "0.4rem 0.75rem", borderRadius: "8px",
+                  background: active ? "#EDE8E0" : "transparent",
+                }}>
                   {link.label}
                 </Link>
               );
             })}
           </div>
 
+          {/* Right side */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }} className="mobile-nav">
+
+            {/* Mobile nav links */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
+              className="mobile-nav">
               {navLinks.map(link => {
                 const active = pathname.startsWith(link.href);
                 return (
-                  <Link key={link.href} href={link.href} style={{ textDecoration: "none", fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", fontWeight: active ? 500 : 400, color: active ? "#1C1917" : "#78716C", padding: "0.35rem 0.6rem", borderRadius: "8px", background: active ? "#EDE8E0" : "transparent", whiteSpace: "nowrap" }}>
+                  <Link key={link.href} href={link.href} style={{
+                    textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.8rem", fontWeight: active ? 500 : 400,
+                    color: active ? "#1C1917" : "#78716C",
+                    padding: "0.35rem 0.6rem", borderRadius: "8px",
+                    background: active ? "#EDE8E0" : "transparent",
+                    whiteSpace: "nowrap",
+                  }}>
                     {link.label}
                   </Link>
                 );
               })}
             </div>
 
+            {/* Avatar button */}
             <div style={{ position: "relative" }}>
-              <button onClick={() => setMenuOpen(!menuOpen)} style={{ display: "flex", alignItems: "center", gap: "0.4rem", background: "none", border: "1px solid #E5E0D8", borderRadius: "100px", padding: "0.25rem 0.5rem 0.25rem 0.25rem", cursor: "pointer" }}>
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                style={{
+                  display: "flex", alignItems: "center", gap: "0.4rem",
+                  background: "none", border: "1px solid #E5E0D8", borderRadius: "100px",
+                  padding: "0.25rem 0.5rem 0.25rem 0.25rem", cursor: "pointer",
+                }}
+              >
                 {avatarUrl ? (
                   <img src={avatarUrl} alt={username} style={{ width: "26px", height: "26px", borderRadius: "50%", objectFit: "cover" }} />
                 ) : (
@@ -86,15 +129,25 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </button>
 
               {menuOpen && (
-                <div style={{ position: "absolute", top: "calc(100% + 8px)", right: 0, background: "#FFFFFF", border: "1px solid #E5E0D8", borderRadius: "12px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", minWidth: "180px", overflow: "hidden", zIndex: 100 }}>
+                <div style={{
+                  position: "absolute", top: "calc(100% + 8px)", right: 0,
+                  background: "#FFFFFF", border: "1px solid #E5E0D8", borderRadius: "12px",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.08)", minWidth: "180px",
+                  overflow: "hidden", zIndex: 100,
+                }}>
                   <div style={{ padding: "0.75rem 1rem", borderBottom: "1px solid #F0EBE3" }}>
                     <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "#A8A29E", margin: 0 }}>Signed in as</p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.825rem", color: "#1C1917", fontWeight: 500, margin: "2px 0 0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{session.user?.email}</p>
+                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.825rem", color: "#1C1917", fontWeight: 500, margin: "2px 0 0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      {session.user?.email}
+                    </p>
                   </div>
-                  <Link href={`/${username}`} onClick={() => setMenuOpen(false)} style={{ display: "block", padding: "0.65rem 1rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "#1C1917", textDecoration: "none" }}>
+                  <Link href={`/${username}`} onClick={() => setMenuOpen(false)}
+                    style={{ display: "block", padding: "0.65rem 1rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "#1C1917", textDecoration: "none" }}>
                     View my profile
                   </Link>
-                  <button onClick={() => { setMenuOpen(false); signOut({ callbackUrl: "/login" }); }} style={{ display: "block", width: "100%", textAlign: "left", padding: "0.65rem 1rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "#DC2626", background: "none", border: "none", borderTop: "1px solid #F0EBE3", cursor: "pointer" }}>
+                  <button
+                    onClick={() => { setMenuOpen(false); signOut({ callbackUrl: "/login" }); }}
+                    style={{ display: "block", width: "100%", textAlign: "left", padding: "0.65rem 1rem", fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "#DC2626", background: "none", border: "none", borderTop: "1px solid #F0EBE3", cursor: "pointer" }}>
                     Sign out
                   </button>
                 </div>

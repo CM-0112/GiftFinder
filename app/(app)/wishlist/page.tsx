@@ -359,7 +359,7 @@ export default function WishlistPage() {
             <div key={item.id} style={{
               background: "#FFFFFF", border: "1px solid #E5E0D8", borderRadius: "14px",
               padding: "1.1rem 1.25rem", display: "flex", alignItems: "center",
-              gap: "1rem", opacity: item.claimed ? 0.6 : 1, transition: "opacity 0.2s",
+              gap: "1rem", 
             }}>
               {item.image_url ? (
                 <img src={item.image_url} alt={item.name}
@@ -378,11 +378,7 @@ export default function WishlistPage() {
                   <span style={{ fontSize: "0.95rem", fontWeight: 500, color: "#1C1917", wordBreak: "break-word" }}>
                     {item.name}
                   </span>
-                  {item.claimed && (
-                    <span style={{ fontSize: "0.7rem", fontWeight: 500, background: "#FEF9C3", color: "#854D0E", padding: "2px 8px", borderRadius: "100px" }}>
-                      Claimed
-                    </span>
-                  )}
+
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginTop: "0.2rem", flexWrap: "wrap" }}>
                   {item.brand && <span style={{ fontSize: "0.8rem", color: "#A8A29E" }}>{item.brand}</span>}
@@ -398,12 +394,7 @@ export default function WishlistPage() {
                     ↗
                   </a>
                 )}
-                {item.claimed && (
-                  <button onClick={() => handleResetClaim(item.id)} disabled={resetingId === item.id}
-                    style={{ fontSize: "0.75rem", padding: "0.3rem 0.7rem", background: "transparent", border: "1px solid #E5E0D8", borderRadius: "8px", color: "#78716C", cursor: "pointer", fontFamily: "'DM Sans', sans-serif" }}>
-                    {resetingId === item.id ? "..." : "Reset"}
-                  </button>
-                )}
+
                 <button onClick={() => handleDelete(item.id)} disabled={deletingId === item.id}
                   style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "8px", border: "1px solid #E5E0D8", background: "transparent", color: deletingId === item.id ? "#A8A29E" : "#EF4444", cursor: deletingId === item.id ? "not-allowed" : "pointer" }}>
                   ✕
@@ -428,4 +419,5 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
 
