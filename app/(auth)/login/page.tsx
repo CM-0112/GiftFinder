@@ -16,78 +16,38 @@ export default function LoginPage() {
       minHeight: "100vh",
       background: "#F7F4EF",
       display: "flex",
-      fontFamily: "'DM Serif Display', Georgia, serif",
+      flexDirection: "column",
+      fontFamily: "'DM Sans', sans-serif",
     }}>
-      {/* Left panel */}
+
+      {/* Top dark panel */}
       <div style={{
-        flex: "0 0 52%",
         background: "#1C1917",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: "3rem",
+        padding: "2.5rem 2rem 3rem",
         position: "relative",
         overflow: "hidden",
       }}>
         {/* Decorative circles */}
-        <div style={{
-          position: "absolute",
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          border: "1px solid rgba(255,255,255,0.06)",
-          top: "-200px",
-          right: "-200px",
-        }}/>
-        <div style={{
-          position: "absolute",
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          border: "1px solid rgba(255,255,255,0.06)",
-          top: "-100px",
-          right: "-100px",
-        }}/>
-        <div style={{
-          position: "absolute",
-          width: "500px",
-          height: "500px",
-          borderRadius: "50%",
-          border: "1px solid rgba(255,255,255,0.04)",
-          bottom: "-200px",
-          left: "-100px",
-        }}/>
+        <div style={{ position: "absolute", width: "400px", height: "400px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)", top: "-150px", right: "-100px" }}/>
+        <div style={{ position: "absolute", width: "250px", height: "250px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)", top: "-80px", right: "-40px" }}/>
 
         {/* Logo */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <span style={{
-            fontSize: "1.1rem",
-            color: "#E8DDD0",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 500,
-          }}>
+        <div style={{ position: "relative", zIndex: 1, marginBottom: "2rem" }}>
+          <span style={{ fontSize: "1rem", color: "#E8DDD0", letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
             ✦ Wishlist
           </span>
         </div>
 
-        {/* Main copy */}
+        {/* Headline */}
         <div style={{ position: "relative", zIndex: 1 }}>
-          <p style={{
-            fontSize: "0.85rem",
-            color: "#8B7355",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            fontFamily: "'DM Sans', sans-serif",
-            marginBottom: "1.5rem",
-          }}>
+          <p style={{ fontSize: "0.8rem", color: "#8B7355", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1rem" }}>
             The art of gifting
           </p>
           <h1 style={{
-            fontSize: "clamp(2.8rem, 4vw, 4rem)",
+            fontFamily: "'DM Serif Display', Georgia, serif",
+            fontSize: "clamp(2rem, 8vw, 3rem)",
             color: "#F7F4EF",
-            lineHeight: 1.1,
+            lineHeight: 1.15,
             margin: 0,
             fontWeight: 400,
           }}>
@@ -96,100 +56,47 @@ export default function LoginPage() {
             <em style={{ color: "#C4A882" }}>what you want.</em>
           </h1>
         </div>
-
-        {/* Bottom tagline */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <p style={{
-            color: "#5C5048",
-            fontSize: "0.9rem",
-            fontFamily: "'DM Sans', sans-serif",
-            lineHeight: 1.7,
-            margin: 0,
-            maxWidth: "320px",
-          }}>
-            Share your wishlist with the people who matter.
-            No more guessing. No more duplicate gifts.
-          </p>
-        </div>
       </div>
 
-      {/* Right panel */}
+      {/* Bottom sign-in panel */}
       <div style={{
         flex: 1,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center",
-        padding: "3rem",
+        padding: "2.5rem 2rem",
       }}>
-        <div style={{ width: "100%", maxWidth: "360px" }}>
+        <div style={{ maxWidth: "400px", width: "100%" }}>
 
           {/* Gift icon */}
           <div style={{
-            width: "56px",
-            height: "56px",
-            background: "#1C1917",
-            borderRadius: "16px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "2rem",
-            fontSize: "1.5rem",
+            width: "52px", height: "52px", background: "#1C1917", borderRadius: "14px",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            marginBottom: "1.75rem", fontSize: "1.4rem",
           }}>
             🎁
           </div>
 
           <h2 style={{
-            fontSize: "2rem",
-            color: "#1C1917",
-            margin: "0 0 0.5rem",
-            fontWeight: 400,
+            fontFamily: "'DM Serif Display', Georgia, serif",
+            fontSize: "1.75rem", color: "#1C1917", margin: "0 0 0.4rem", fontWeight: 400,
           }}>
             Welcome back
           </h2>
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            color: "#78716C",
-            fontSize: "0.95rem",
-            margin: "0 0 2.5rem",
-            lineHeight: 1.6,
-          }}>
+          <p style={{ color: "#78716C", fontSize: "0.9rem", margin: "0 0 2rem", lineHeight: 1.6 }}>
             Sign in to manage your wishlist or browse a friend's.
           </p>
 
-          {/* Sign in button */}
           <button
             onClick={handleSignIn}
             disabled={loading}
             style={{
-              width: "100%",
-              padding: "0.9rem 1.5rem",
+              width: "100%", padding: "0.9rem 1.5rem",
               background: loading ? "#D6CFC8" : "#1C1917",
-              color: "#F7F4EF",
-              border: "none",
-              borderRadius: "12px",
-              fontSize: "0.95rem",
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 500,
+              color: "#F7F4EF", border: "none", borderRadius: "12px",
+              fontSize: "0.95rem", fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
               cursor: loading ? "not-allowed" : "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.75rem",
-              transition: "background 0.2s, transform 0.1s",
-              letterSpacing: "0.01em",
-            }}
-            onMouseEnter={e => {
-              if (!loading) (e.target as HTMLButtonElement).style.background = "#2C2420";
-            }}
-            onMouseLeave={e => {
-              if (!loading) (e.target as HTMLButtonElement).style.background = "#1C1917";
-            }}
-            onMouseDown={e => {
-              (e.target as HTMLButtonElement).style.transform = "scale(0.98)";
-            }}
-            onMouseUp={e => {
-              (e.target as HTMLButtonElement).style.transform = "scale(1)";
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem",
             }}
           >
             {loading ? (
@@ -202,33 +109,13 @@ export default function LoginPage() {
             )}
           </button>
 
-          {/* Divider */}
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-            margin: "2rem 0",
-          }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", margin: "1.5rem 0" }}>
             <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
-            <span style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "0.8rem",
-              color: "#A8A29E",
-              letterSpacing: "0.05em",
-            }}>
-              or
-            </span>
+            <span style={{ fontSize: "0.8rem", color: "#A8A29E" }}>or</span>
             <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
           </div>
 
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "0.8rem",
-            color: "#A8A29E",
-            textAlign: "center",
-            lineHeight: 1.6,
-            margin: 0,
-          }}>
+          <p style={{ fontSize: "0.78rem", color: "#A8A29E", textAlign: "center", lineHeight: 1.6, margin: 0 }}>
             By continuing, you agree to our{" "}
             <a href="#" style={{ color: "#78716C", textDecoration: "underline" }}>Terms</a>
             {" "}and{" "}
@@ -237,9 +124,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Google Fonts */}
       <style>{`
-        
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { margin: 0; }
       `}</style>
@@ -257,3 +142,4 @@ function GoogleIcon() {
     </svg>
   );
 }
+

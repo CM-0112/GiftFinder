@@ -363,7 +363,7 @@ export default function WishlistPage() {
 
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
-                  <span style={{ fontSize: "0.95rem", fontWeight: 500, color: "#1C1917", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  <span style={{ fontSize: "0.95rem", fontWeight: 500, color: "#1C1917", wordBreak: "break-word" }}>
                     {item.name}
                   </span>
                   {item.claimed && (
