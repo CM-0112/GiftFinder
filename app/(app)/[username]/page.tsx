@@ -330,11 +330,11 @@ export default function ProfilePage() {
                           {item.claimed && (
                             <span style={{
                               fontSize: "0.7rem", fontWeight: 500,
-                              background: justClaimed ? "#F0FDF4" : "#FEF9C3",
-                              color: justClaimed ? "#16A34A" : "#854D0E",
+                              background: (justClaimed || (item as any).claimed_by === currentUserId) ? "#EFF6FF" : "#FEF9C3",
+                              color: (justClaimed || (item as any).claimed_by === currentUserId) ? "#1D4ED8" : "#854D0E",
                               padding: "2px 8px", borderRadius: "100px",
                             }}>
-                              {justClaimed ? "✓ You're getting this!" : "Someone's getting this"}
+                              {(justClaimed || (item as any).claimed_by === currentUserId) ? "✓ You've claimed this" : "Someone's getting this"}
                             </span>
                           )}
                         </div>
@@ -395,4 +395,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
 
