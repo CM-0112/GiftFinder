@@ -35,7 +35,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const navLinks = [
     { href: "/wishlist", label: "My Wishlist" },
     { href: "/connections", label: "Connections" },
-    { href: "/gifts-giving", label: "Gifts I'm Giving" },
+    { href: "/gifts-giving", label: "Items I've Claimed" },
   ];
 
   return (
@@ -177,3 +177,4 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+

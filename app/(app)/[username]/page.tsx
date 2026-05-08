@@ -378,6 +378,20 @@ export default function ProfilePage() {
           )}
         </>
       )}
+    <style>{`
+        .profile-header {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          margin-bottom: 2.5rem;
+          padding-bottom: 2rem;
+          border-bottom: 1px solid #E5E0D8;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 480px) {
+          .profile-header { gap: 0.75rem; }
+        }
+      `}</style>
     </div>
   );
 }
