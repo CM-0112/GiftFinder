@@ -65,17 +65,19 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </Link>
 
           {/* Nav links — hidden on mobile, shown on desktop */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
-            className="desktop-nav">
+          {/* Nav links — single set, responsive font size */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.15rem", flex: 1, justifyContent: "center" }}>
             {navLinks.map(link => {
               const active = pathname.startsWith(link.href);
               return (
                 <Link key={link.href} href={link.href} style={{
                   textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "0.875rem", fontWeight: active ? 500 : 400,
+                  fontSize: "clamp(0.75rem, 2vw, 0.875rem)",
+                  fontWeight: active ? 500 : 400,
                   color: active ? "#1C1917" : "#78716C",
-                  padding: "0.4rem 0.75rem", borderRadius: "8px",
+                  padding: "0.35rem 0.6rem", borderRadius: "8px",
                   background: active ? "#EDE8E0" : "transparent",
+                  whiteSpace: "nowrap",
                 }}>
                   {link.label}
                 </Link>
@@ -83,28 +85,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             })}
           </div>
 
-          {/* Right side */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
-
-            {/* Mobile nav links */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
-              className="mobile-nav">
-              {navLinks.map(link => {
-                const active = pathname.startsWith(link.href);
-                return (
-                  <Link key={link.href} href={link.href} style={{
-                    textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.8rem", fontWeight: active ? 500 : 400,
-                    color: active ? "#1C1917" : "#78716C",
-                    padding: "0.35rem 0.6rem", borderRadius: "8px",
-                    background: active ? "#EDE8E0" : "transparent",
-                    whiteSpace: "nowrap",
-                  }}>
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
 
             {/* Avatar button */}
             <div style={{ position: "relative" }}>
@@ -167,14 +148,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { margin: 0; }
         a { color: inherit; }
-        .desktop-nav { display: flex; }
-        .mobile-nav { display: none; }
-        @media (max-width: 600px) {
-          .desktop-nav { display: none !important; }
-          .mobile-nav { display: flex !important; }
-        }
       `}</style>
     </div>
   );
 }
+
 
