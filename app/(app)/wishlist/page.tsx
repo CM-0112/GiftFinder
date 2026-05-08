@@ -72,6 +72,7 @@ export default function WishlistPage() {
         price_display: data.price_display ?? f.price_display,
         image_url: data.image_url ?? f.image_url,
         product_url: form.url,
+        note: data.note ?? f.note,
       }));
     } catch {
       setError("Couldn't fetch that URL. Fill in the details manually.");
