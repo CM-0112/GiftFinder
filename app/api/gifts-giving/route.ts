@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { createServiceClient } from "@/supabase/server";
 
-// GET /api/gifts-giving — fetch all items claimed by the current user
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user) {
@@ -13,16 +12,30 @@ export async function GET(req: NextRequest) {
   const userId: string = session.user.id;
   const supabase = createServiceClient();
 
-  const { data, error } = await supabase
+  // Fetch claimed items
+  const { data: items, error } = await supabase
     .from("wishlist_items")
-    .select(`
-      *,
-      owner:users!wishlist_items_user_id_fkey(id, username, display_name, avatar_url)
-    `)
+    .select("*")
     .eq("claimed_by", userId)
     .eq("claimed", true)
     .order("claimed_at", { ascending: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data ?? []);
+  if (!items || items.length === 0) return NextResponse.json([]);
+
+  // Fetch owner details separately
+  const ownerIds = [...new Set(items.map((i: any) => i.user_id))];
+  const { data: owners } = await supabase
+    .from("users")
+    .select("id, username, display_name, avatar_url")
+    .in("id", ownerIds);
+
+  const ownerMap = new Map((owners ?? []).map((o: any) => [o.id, o]));
+
+  const result = items.map((item: any) => ({
+    ...item,
+    owner: ownerMap.get(item.user_id) ?? null,
+  }));
+
+  return NextResponse.json(result);
 }
