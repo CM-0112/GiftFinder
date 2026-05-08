@@ -54,9 +54,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             style={{ background: "none", border: "none", cursor: "pointer", padding: "0.4rem", display: "flex", flexDirection: "column", gap: "5px", flexShrink: 0 }}
             aria-label="Menu"
           >
-            <span style={{ display: "block", width: "20px", height: "1.5px", background: mobileOpen ? "#1C1917" : "#57534E", transition: "all 0.2s", transform: mobileOpen ? "rotate(45deg) translate(4px, 4px)" : "none" }}/>
-            <span style={{ display: "block", width: "20px", height: "1.5px", background: mobileOpen ? "transparent" : "#57534E", transition: "all 0.2s" }}/>
-            <span style={{ display: "block", width: "20px", height: "1.5px", background: mobileOpen ? "#1C1917" : "#57534E", transition: "all 0.2s", transform: mobileOpen ? "rotate(-45deg) translate(4px, -4px)" : "none" }}/>
+            <span style={{ display: "block", width: "20px", height: "1.5px", background: "#57534E" }}/>
+            <span style={{ display: "block", width: "20px", height: "1.5px", background: "#57534E" }}/>
+            <span style={{ display: "block", width: "20px", height: "1.5px", background: "#57534E" }}/>
           </button>
 
           {/* Logo */}
@@ -168,6 +168,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
 
 
 
