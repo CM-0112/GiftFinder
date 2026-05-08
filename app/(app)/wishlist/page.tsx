@@ -159,7 +159,7 @@ export default function WishlistPage() {
           <p style={{ color: "#78716C", fontSize: "0.9rem", margin: 0 }}>
             {items.length === 0
               ? "Add items you'd love to receive."
-              : `${unclaimed.length} available · ${claimed.length} claimed`}
+              : `${items.length} item${items.length === 1 ? "" : "s"} on your list`}
           </p>
         </div>
         <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
@@ -419,5 +419,6 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
 
 
