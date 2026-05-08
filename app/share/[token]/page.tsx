@@ -52,7 +52,7 @@ export default function SharePage() {
         <p style={{ color: "#78716C", fontSize: "0.9rem", margin: "0 0 1.5rem" }}>
           This link may have expired or been removed.
         </p>
-        <Link href="/" style={{ color: "#1C1917", fontSize: "0.9rem" }}>Go to GiftFinder →</Link>
+        <Link href="/" style={{ color: "#1C1917", fontSize: "0.9rem" }}>Go to Gift Finder →</Link>
       </div>
     );
   }
@@ -84,7 +84,7 @@ export default function SharePage() {
           borderRadius: "100px", textDecoration: "none", whiteSpace: "nowrap",
           border: "1px solid rgba(255,255,255,0.2)",
         }}>
-          Join GiftFinder →
+          Join Gift Finder →
         </Link>
       </div>
 

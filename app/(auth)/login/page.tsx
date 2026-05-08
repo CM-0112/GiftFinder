@@ -34,7 +34,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div style={{ position: "relative", zIndex: 1, marginBottom: "2rem" }}>
           <span style={{ fontSize: "1rem", color: "#E8DDD0", letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
-            ✦ Wishlist
+            ✦ Gift Finder
           </span>
         </div>
 

@@ -59,7 +59,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               fontFamily: "'DM Serif Display', Georgia, serif",
               fontSize: "1.1rem", color: "#1C1917",
             }}>
-              ✦ Wishlist
+              ✦ Gift Finder
             </span>
           </Link>
 
@@ -175,4 +175,3 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       `}</style>
     </div>
   );
-}

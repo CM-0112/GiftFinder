@@ -135,7 +135,7 @@ export default function SetupPage() {
             padding: "0.6rem 1rem", marginBottom: "0.75rem",
             display: "flex", alignItems: "center",
           }}>
-            <span style={{ color: "#A8A29E", fontSize: "0.875rem" }}>wishlist.app/</span>
+            <span style={{ color: "#A8A29E", fontSize: "0.875rem" }}>giftfinder.app/</span>
             <span style={{ color: username ? "#1C1917" : "#D6CFC8", fontSize: "0.875rem", fontWeight: 500 }}>
               {username || "your-username"}
             </span>
