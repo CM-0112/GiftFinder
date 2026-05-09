@@ -1,5 +1,7 @@
 "use client";
 
+import ItemImage from "@/components/ItemImage";
+
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import type { WishlistItem } from "@/types";
@@ -420,6 +422,7 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
 
 
 

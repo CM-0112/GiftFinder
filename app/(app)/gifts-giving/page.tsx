@@ -1,5 +1,7 @@
 "use client";
 
+import ItemImage from "@/components/ItemImage";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -122,7 +124,7 @@ export default function GiftsGivingPage() {
               {owner.avatar_url ? (
                 <img src={owner.avatar_url} alt={owner.display_name ?? owner.username}
                   style={{ width: "32px", height: "32px", borderRadius: "50%", objectFit: "cover" }}
-                  onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  onError={() => {}} />
               ) : (
                 <div style={{
                   width: "32px", height: "32px", borderRadius: "50%", background: "#1C1917",
@@ -157,17 +159,7 @@ export default function GiftsGivingPage() {
                   borderRadius: "14px", padding: "1rem 1.25rem",
                   display: "flex", alignItems: "center", gap: "1rem",
                 }}>
-                  {item.image_url ? (
-                    <img src={item.image_url} alt={item.name}
-                      style={{ width: "50px", height: "50px", objectFit: "cover", borderRadius: "8px", border: "1px solid #E5E0D8", flexShrink: 0 }}
-                      onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  ) : (
-                    <div style={{
-                      width: "50px", height: "50px", background: "#F7F4EF",
-                      borderRadius: "8px", border: "1px solid #E5E0D8", flexShrink: 0,
-                      display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem",
-                    }}>🎁</div>
-                  )}
+                  <ItemImage src={item.image_url} alt={item.name} size={50} />
 
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <p style={{ fontSize: "0.9rem", fontWeight: 500, color: "#1C1917", margin: 0, wordBreak: "break-word" }}>
@@ -209,4 +201,5 @@ export default function GiftsGivingPage() {
     </div>
   );
 }
+
 

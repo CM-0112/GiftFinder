@@ -1,5 +1,7 @@
 "use client";
 
+import ItemImage from "@/components/ItemImage";
+
 import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -104,7 +106,7 @@ export default function SharePage() {
           {user.avatar_url ? (
             <img src={user.avatar_url} alt={displayName}
               style={{ width: "64px", height: "64px", borderRadius: "50%", objectFit: "cover", flexShrink: 0 }}
-              onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              onError={() => {}} />
           ) : (
             <div style={{
               width: "64px", height: "64px", borderRadius: "50%", background: "#1C1917",
@@ -157,17 +159,7 @@ export default function SharePage() {
                 display: "flex", alignItems: "center", gap: "1rem",
                 opacity: (item.claimed && !isOwner) ? 0.55 : 1,
               }}>
-                {item.image_url ? (
-                  <img src={item.image_url} alt={item.name}
-                    style={{ width: "56px", height: "56px", objectFit: "cover", borderRadius: "10px", border: "1px solid #E5E0D8", flexShrink: 0 }}
-                    onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                ) : (
-                  <div style={{
-                    width: "56px", height: "56px", background: "#F7F4EF",
-                    borderRadius: "10px", border: "1px solid #E5E0D8", flexShrink: 0,
-                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.4rem",
-                  }}>🎁</div>
-                )}
+                <ItemImage src={item.image_url} alt={item.name} size={56} />
 
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
@@ -237,4 +229,5 @@ export default function SharePage() {
     </div>
   );
 }
+
 

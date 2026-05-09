@@ -130,11 +130,11 @@ async function scrapeShopify(url: string): Promise<ScrapeResult> {
 
     return {
       success: !!(name && formattedPrice),
-      name,
-      brand,
+      name: name ? decodeHtmlEntities(name) : undefined,
+      brand: brand ? decodeHtmlEntities(brand) : undefined,
       price_display: formattedPrice,
       image_url: image,
-      note: variantTitle, // pass variant info as a note suggestion
+      note: variantTitle,
       fields_found,
     };
   } catch (err: any) {
@@ -182,9 +182,9 @@ async function scrapeOG(url: string): Promise<ScrapeResult> {
 
     return {
       success: !!(name && price),
-      name: name ?? undefined,
+      name: name ? decodeHtmlEntities(name) : undefined,
       price_display: price ? formatPrice(price) : undefined,
-      brand: brand ?? undefined,
+      brand: brand ? decodeHtmlEntities(brand) : undefined,
       image_url: image ?? undefined,
       fields_found,
     };
@@ -238,3 +238,17 @@ function formatPrice(raw: string): string {
 function escapeRegex(str: string) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
+
+function decodeHtmlEntities(str: string): string {
+  return str
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#039;/gi, "'")
+    .replace(/&apos;/gi, "'")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code)))
+    .trim();
+}
+
