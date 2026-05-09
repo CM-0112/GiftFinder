@@ -364,17 +364,7 @@ export default function WishlistPage() {
               padding: "1.1rem 1.25rem", display: "flex", alignItems: "center",
               gap: "1rem", 
             }}>
-              {item.image_url ? (
-                <img src={item.image_url} alt={item.name}
-                  style={{ width: "56px", height: "56px", objectFit: "cover", borderRadius: "10px", border: "1px solid #E5E0D8", flexShrink: 0 }}
-                  onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-              ) : (
-                <div style={{
-                  width: "56px", height: "56px", background: "#F7F4EF", borderRadius: "10px",
-                  border: "1px solid #E5E0D8", flexShrink: 0, display: "flex",
-                  alignItems: "center", justifyContent: "center", fontSize: "1.5rem",
-                }}>🎁</div>
-              )}
+              <ItemImage src={item.image_url} alt={item.name} size={56} />
 
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
@@ -422,6 +412,7 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
 
 
 
