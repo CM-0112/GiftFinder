@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { WishlistItem } from "@/types";
@@ -17,6 +18,7 @@ type ShareData = {
 export default function SharePage() {
   const params = useParams();
   const token = params.token as string;
+  const { data: session } = useSession();
   const [data, setData] = useState<ShareData | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -60,6 +62,9 @@ export default function SharePage() {
   if (!data) return null;
 
   const { user, items } = data;
+  // @ts-ignore
+  const currentUsername = session?.user?.username ?? "";
+  const isOwner = currentUsername === user.username;
   const displayName = user.display_name ?? user.username;
   const initials = displayName.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase();
   const unclaimed = items.filter(i => !i.claimed);
@@ -150,7 +155,7 @@ export default function SharePage() {
                 background: "#FFFFFF", border: "1px solid #E5E0D8",
                 borderRadius: "14px", padding: "1.1rem 1.25rem",
                 display: "flex", alignItems: "center", gap: "1rem",
-                opacity: item.claimed ? 0.55 : 1,
+                opacity: (item.claimed && !isOwner) ? 0.55 : 1,
               }}>
                 {item.image_url ? (
                   <img src={item.image_url} alt={item.name}
@@ -169,7 +174,7 @@ export default function SharePage() {
                     <span style={{ fontSize: "0.95rem", fontWeight: 500, color: "#1C1917" }}>
                       {item.name}
                     </span>
-                    {item.claimed && (
+                    {item.claimed && !isOwner && (
                       <span style={{
                         fontSize: "0.7rem", fontWeight: 500,
                         background: "#FEF9C3", color: "#854D0E",
@@ -232,3 +237,4 @@ export default function SharePage() {
     </div>
   );
 }
+
