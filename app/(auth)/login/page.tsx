@@ -1,5 +1,6 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 
 import { signIn } from "next-auth/react";
 import { useState } from "react";
@@ -25,13 +26,13 @@ export default function LoginPage() {
           <div style={{ position: "absolute", width: "400px", height: "400px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.04)", bottom: "-150px", left: "-80px" }}/>
 
           <div style={{ position: "relative", zIndex: 1, marginBottom: "auto" }}>
-            <span style={{ fontSize: "1rem", color: "#E8DDD0", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
+            <span style={{ fontSize: "1rem", color: "#FFFFFF", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
               ✦ Gift Finder
             </span>
           </div>
 
           <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <p style={{ fontSize: "0.8rem", color: "#8B7355", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
+            <p style={{ fontSize: "0.8rem", color: "#E8622A", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
               The art of gifting
             </p>
             <h1 style={{
@@ -39,14 +40,14 @@ export default function LoginPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               color: "#F7F4EF", lineHeight: 1.1, margin: 0, fontWeight: 400,
             }}>
-              Tell the people<br />
-              who love you<br />
-              <em style={{ color: "#C4A882" }}>what you want.</em>
+              Know exactly<br />
+              what to gift<br />
+              <em style={{ color: "#E8622A" }}>the people you love.</em>
             </h1>
           </div>
 
           <div style={{ position: "relative", zIndex: 1, marginTop: "auto" }}>
-            <p style={{ color: "#5C5048", fontSize: "0.875rem", lineHeight: 1.7, margin: 0 }}>
+            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.875rem", lineHeight: 1.7, margin: 0 }}>
               Share your wishlist with the people who matter.<br />
               No more guessing. No more duplicate gifts.
             </p>
@@ -60,17 +61,17 @@ export default function LoginPage() {
               🎁
             </div>
             <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.85rem", color: "#1C1917", margin: "0 0 0.4rem", fontWeight: 400 }}>
-              Welcome back
+              Welcome
             </h2>
             <p style={{ color: "#78716C", fontSize: "0.9rem", margin: "0 0 2rem", lineHeight: 1.6 }}>
-              Sign in to manage your wishlist or browse a friend's.
+              No more guessing. No more endless searching.
             </p>
             <button
               onClick={handleSignIn}
               disabled={loading}
               style={{
                 width: "100%", padding: "0.9rem 1.5rem",
-                background: loading ? "#D6CFC8" : "#1C1917",
+                background: loading ? "#C94E1E" : "#E8622A",
                 color: "#F7F4EF", border: "none", borderRadius: "12px",
                 fontSize: "0.95rem", fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
                 cursor: loading ? "not-allowed" : "pointer",
@@ -80,9 +81,9 @@ export default function LoginPage() {
               {loading ? <span style={{ opacity: 0.7 }}>Signing in...</span> : <><GoogleIcon />Continue with Google</>}
             </button>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem", margin: "1.5rem 0" }}>
-              <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
+              <div style={{ flex: 1, height: "1px", background: "#E8E8E8" }}/>
               <span style={{ fontSize: "0.8rem", color: "#A8A29E" }}>or</span>
-              <div style={{ flex: 1, height: "1px", background: "#E5E0D8" }}/>
+              <div style={{ flex: 1, height: "1px", background: "#E8E8E8" }}/>
             </div>
             <p style={{ fontSize: "0.78rem", color: "#A8A29E", textAlign: "center", lineHeight: 1.6, margin: 0 }}>
               By continuing, you agree to our{" "}
@@ -157,6 +158,7 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
 

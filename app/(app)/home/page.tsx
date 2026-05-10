@@ -1,5 +1,6 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -52,15 +53,15 @@ export default function HomePage() {
       label: "My Wishlist",
       sublabel: loading ? "..." : stats?.wishlistCount === 0 ? "Add your first item" : `${stats?.wishlistCount} item${stats?.wishlistCount === 1 ? "" : "s"} on your list`,
       cta: "View list",
-      accent: "#F0EBE3",
+      accent: "#FFF0E8",
     },
     {
       href: "/connections",
       icon: "🤝",
       label: "Connections",
-      sublabel: loading ? "..." : stats?.pendingCount ? `${stats.pendingCount} pending request${stats.pendingCount === 1 ? "" : "s"}` : `${stats?.confirmedCount ?? 0} connection${stats?.confirmedCount === 1 ? "" : "s"}`,
+      sublabel: loading ? "..." : `${stats?.confirmedCount ?? 0} connection${stats?.confirmedCount === 1 ? "" : "s"}${stats?.pendingCount ? ` · ${stats.pendingCount} pending` : ""}`,
       cta: "View connections",
-      accent: "#E8F4F0",
+      accent: "#F5F5F5",
       badge: stats?.pendingCount ?? 0,
     },
     {
@@ -69,7 +70,7 @@ export default function HomePage() {
       label: "Items I've Claimed",
       sublabel: loading ? "..." : stats?.claimedCount === 0 ? "Nothing claimed yet" : `${stats?.claimedCount} item${stats?.claimedCount === 1 ? "" : "s"} claimed`,
       cta: "View claims",
-      accent: "#EEF0F8",
+      accent: "#F5F5F5",
     },
   ];
 
@@ -88,11 +89,9 @@ export default function HomePage() {
           fontWeight: 400,
           margin: "0 0 0.5rem",
         }}>
-          Welcome back, {firstName} 👋
+          Welcome, {firstName} 👋
         </h1>
-        <p style={{ color: "#78716C", fontSize: "0.95rem", margin: 0, lineHeight: 1.6, maxWidth: "520px" }}>
-          Gift giving should be joyful — not stressful. No more guessing, no more spending days deciding what to get.
-        </p>
+        
       </div>
 
       {/* Quick action cards */}
@@ -122,7 +121,7 @@ export default function HomePage() {
               overflow: "hidden",
             }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(232,98,42,0.12)";
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
               }}
               onMouseLeave={e => {
@@ -143,7 +142,7 @@ export default function HomePage() {
               {action.badge ? (
                 <div style={{
                   position: "absolute", top: "1rem", right: "1rem",
-                  background: "#1C1917", color: "#F7F4EF",
+                  background: "#E8622A", color: "#FFFFFF",
                   borderRadius: "100px", fontSize: "0.7rem",
                   fontWeight: 500, padding: "2px 8px",
                   zIndex: 1,
@@ -160,7 +159,7 @@ export default function HomePage() {
                 {action.sublabel}
               </p>
               <span style={{
-                fontSize: "0.8rem", color: "#78716C",
+                fontSize: "0.8rem", color: "#E8622A",
                 display: "flex", alignItems: "center", gap: "0.25rem",
               }}>
                 {action.cta} →
@@ -253,7 +252,7 @@ export default function HomePage() {
                     )}
                     <span style={{
                       fontSize: "0.7rem", color: "#A8A29E",
-                      background: "#F7F4EF", padding: "2px 6px", borderRadius: "100px",
+                      background: "#FFF0E8", color: "#E8622A", padding: "2px 6px", borderRadius: "100px",
                       marginLeft: "auto",
                     }}>
                       {item.count} {item.count === 1 ? "person" : "people"}
@@ -277,3 +276,4 @@ export default function HomePage() {
     </div>
   );
 }
+
