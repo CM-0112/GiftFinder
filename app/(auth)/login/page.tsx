@@ -71,7 +71,7 @@ export default function LoginPage() {
               disabled={loading}
               style={{
                 width: "100%", padding: "0.9rem 1.5rem",
-                background: loading ? "#C94E1E" : "#E8622A",
+                background: loading ? "#333333" : "#000000",
                 color: "#F7F4EF", border: "none", borderRadius: "12px",
                 fontSize: "0.95rem", fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
                 cursor: loading ? "not-allowed" : "pointer",
@@ -158,6 +158,7 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
 
