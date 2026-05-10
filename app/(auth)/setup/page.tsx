@@ -59,7 +59,7 @@ export default function SetupPage() {
       });
       if (res.ok) {
         await update();
-        router.push("/wishlist");
+        router.push("/home");
       } else {
         const data = await res.json();
         setError(data.error ?? "Something went wrong. Please try again.");
@@ -205,3 +205,4 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box", transition: "border-color 0.15s",
 };
+

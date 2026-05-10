@@ -8,7 +8,7 @@ export default function LoginPage() {
 
   const handleSignIn = async () => {
     setLoading(true);
-    await signIn("google", { callbackUrl: "/wishlist" });
+    await signIn("google", { callbackUrl: "/home" });
   };
 
   return (
@@ -156,5 +156,6 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
