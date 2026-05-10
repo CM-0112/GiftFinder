@@ -1,6 +1,5 @@
 "use client";
 
-export const dynamic = "force-dynamic";
 
 import ItemImage from "@/components/ItemImage";
 
