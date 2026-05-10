@@ -6,12 +6,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
 };
 
