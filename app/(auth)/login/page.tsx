@@ -40,16 +40,16 @@ export default function LoginPage() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               color: "#F7F4EF", lineHeight: 1.1, margin: 0, fontWeight: 400,
             }}>
-              Know exactly<br />
-              what to gift<br />
-              <em style={{ color: "#E8622A" }}>the people you love.</em>
+              Share what<br />
+              you want.<br />
+              <em style={{ color: "#E8622A" }}>Gift with confidence.</em>
             </h1>
           </div>
 
           <div style={{ position: "relative", zIndex: 1, marginTop: "auto" }}>
             <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.875rem", lineHeight: 1.7, margin: 0 }}>
-              Share your wishlist with the people who matter.<br />
-              No more guessing. No more duplicate gifts.
+              No more guessing.<br />
+              No more endless searching.
             </p>
           </div>
         </div>
@@ -158,6 +158,7 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
 
