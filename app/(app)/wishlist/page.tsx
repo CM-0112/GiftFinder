@@ -144,7 +144,21 @@ export default function WishlistPage() {
   }
 
   async function copyProfileUrl() {
-    await navigator.clipboard.writeText(shareUrl);
+    if (!shareUrl) {
+      alert("Share link is loading, please try again in a moment.");
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+    } catch {
+      // Fallback for browsers that block clipboard
+      const el = document.createElement("textarea");
+      el.value = shareUrl;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+    }
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -181,15 +195,17 @@ export default function WishlistPage() {
         <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
           <button
             onClick={copyProfileUrl}
+            title={shareUrl || "Loading share link..."}
             style={{
               display: "flex", alignItems: "center", gap: "0.5rem",
               padding: "0.55rem 1rem", background: "transparent",
               border: "1px solid #E5E0D8", borderRadius: "10px",
               fontSize: "0.875rem", color: copied ? "#16A34A" : "#78716C",
-              cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
+              cursor: shareUrl ? "pointer" : "not-allowed", fontFamily: "'DM Sans', sans-serif",
+              opacity: shareUrl ? 1 : 0.6,
             }}
           >
-            {copied ? "✓ Copied!" : "⇗ Share wishlist"}
+            {copied ? `✓ Copied!` : "⇗ Share wishlist"}
           </button>
           <button
             onClick={() => { setShowForm(true); setError(""); }}
@@ -425,6 +441,7 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
 
 
 
