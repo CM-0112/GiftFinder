@@ -43,9 +43,20 @@ export default function WishlistPage() {
 
   // @ts-ignore
   const username = session?.user?.username ?? "";
-  // @ts-ignore
-  const shareToken = session?.user?.share_token ?? "";
-  const shareUrl = typeof window !== "undefined" && shareToken ? `${window.location.origin}/share/${shareToken}` : "";
+  const [shareUrl, setShareUrl] = useState("");
+
+  useEffect(() => {
+    async function fetchShareToken() {
+      const res = await fetch("/api/users/share-token");
+      if (res.ok) {
+        const { token } = await res.json();
+        if (token && typeof window !== "undefined") {
+          setShareUrl(`${window.location.origin}/share/${token}`);
+        }
+      }
+    }
+    fetchShareToken();
+  }, []);
 
   useEffect(() => {
     if (username) fetchItems();
@@ -414,6 +425,7 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
 
 
 
