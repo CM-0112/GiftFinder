@@ -1,5 +1,6 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState, useCallback } from "react";
@@ -371,7 +372,7 @@ export default function ConnectionsPage() {
                       fontSize: "0.8rem",
                     }}
                   >
-                    ✕
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L7 7L12 12M12 2L7 7L2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </button>
                 </div>
               </div>
@@ -409,3 +410,4 @@ function SearchIcon() {
     </svg>
   );
 }
+

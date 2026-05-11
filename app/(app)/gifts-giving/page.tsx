@@ -197,7 +197,7 @@ export default function GiftsGivingPage() {
                         background: "transparent", color: unclaimingId === item.id ? "#A8A29E" : "#EF4444",
                         cursor: unclaimingId === item.id ? "not-allowed" : "pointer", fontSize: "0.8rem",
                       }}>
-                      ✕
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L7 7L12 12M12 2L7 7L2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </button>
                   </div>
                 </div>
@@ -209,6 +209,7 @@ export default function GiftsGivingPage() {
     </div>
   );
 }
+
 
 
 

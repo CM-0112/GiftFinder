@@ -1,5 +1,6 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 
 import ItemImage from "@/components/ItemImage";
 
@@ -183,9 +184,9 @@ export default function WishlistPage() {
             onClick={() => { setShowForm(true); setError(""); }}
             style={{
               display: "flex", alignItems: "center", gap: "0.5rem",
-              padding: "0.55rem 1.1rem", background: "#1C1917",
+              padding: "0.55rem 1.1rem", background: "#E8622A",
               border: "none", borderRadius: "10px", fontSize: "0.875rem",
-              color: "#F7F4EF", cursor: "pointer",
+              color: "#FFFFFF", cursor: "pointer",
               fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
             }}
           >
@@ -221,7 +222,7 @@ export default function WishlistPage() {
                 disabled={scraping || !form.url.trim()}
                 style={{
                   padding: "0 1.1rem", background: scraping ? "#E5E0D8" : "#1C1917",
-                  color: "#F7F4EF", border: "none", borderRadius: "10px",
+                  color: "#FFFFFF", border: "none", borderRadius: "10px",
                   fontSize: "0.875rem", fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 500, cursor: scraping ? "not-allowed" : "pointer",
                   whiteSpace: "nowrap", minWidth: "80px",
@@ -313,7 +314,7 @@ export default function WishlistPage() {
               style={{
                 padding: "0.6rem 1.25rem", background: saving ? "#A8A29E" : "#1C1917",
                 border: "none", borderRadius: "10px", fontSize: "0.875rem",
-                color: "#F7F4EF", cursor: saving ? "not-allowed" : "pointer",
+                color: "#FFFFFF", cursor: saving ? "not-allowed" : "pointer",
                 fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
               }}
             >
@@ -341,8 +342,8 @@ export default function WishlistPage() {
           <button
             onClick={() => setShowForm(true)}
             style={{
-              padding: "0.65rem 1.5rem", background: "#1C1917", border: "none",
-              borderRadius: "10px", fontSize: "0.875rem", color: "#F7F4EF",
+              padding: "0.65rem 1.5rem", background: "#E8622A", border: "none",
+              borderRadius: "10px", fontSize: "0.875rem", color: "#FFFFFF",
               cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
             }}
           >
@@ -391,7 +392,7 @@ export default function WishlistPage() {
 
                 <button onClick={() => handleDelete(item.id)} disabled={deletingId === item.id}
                   style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "8px", border: "1px solid #E5E0D8", background: "transparent", color: deletingId === item.id ? "#A8A29E" : "#EF4444", cursor: deletingId === item.id ? "not-allowed" : "pointer" }}>
-                  ✕
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L7 7L12 12M12 2L7 7L2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </button>
               </div>
             </div>
@@ -413,6 +414,7 @@ const inputStyle: React.CSSProperties = {
   color: "#1C1917", fontFamily: "'DM Sans', sans-serif", outline: "none",
   boxSizing: "border-box",
 };
+
 
 
 

@@ -1,5 +1,6 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 
 import ItemImage from "@/components/ItemImage";
 
@@ -29,6 +30,7 @@ export default function ProfilePage() {
   const [connectionId, setConnectionId] = useState<string | null>(null);
   const [actioning, setActioning] = useState(false);
   const [claimingId, setClaimingId] = useState<string | null>(null);
+  const [unclaimingId, setUnclaimingId] = useState<string | null>(null);
   const [claimedIds, setClaimedIds] = useState<Set<string>>(new Set());
 
   // @ts-ignore
@@ -109,6 +111,20 @@ export default function ProfilePage() {
       await loadWishlist();
     }
     setActioning(false);
+  }
+
+  async function unclaimItem(itemId: string) {
+    setUnclaimingId(itemId);
+    const res = await fetch(`/api/wishlist/${itemId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ claimed: false }),
+    });
+    if (res.ok) {
+      setItems(prev => prev.map(i => i.id === itemId ? { ...i, claimed: false } : i));
+      setClaimedIds(prev => prev.filter(id => id !== itemId));
+    }
+    setUnclaimingId(null);
   }
 
   async function claimItem(itemId: string) {
@@ -320,14 +336,30 @@ export default function ProfilePage() {
                             {item.name}
                           </span>
                           {item.claimed && (
-                            <span style={{
-                              fontSize: "0.7rem", fontWeight: 500,
-                              background: (justClaimed || (item as any).claimed_by === currentUserId) ? "#EFF6FF" : "#FEF9C3",
-                              color: (justClaimed || (item as any).claimed_by === currentUserId) ? "#1D4ED8" : "#854D0E",
-                              padding: "2px 8px", borderRadius: "100px",
-                            }}>
-                              {(justClaimed || (item as any).claimed_by === currentUserId) ? "✓ You've claimed this" : "Someone's getting this"}
-                            </span>
+                            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", flexWrap: "wrap" }}>
+                              <span style={{
+                                fontSize: "0.7rem", fontWeight: 500,
+                                background: (justClaimed || (item as any).claimed_by === currentUserId) ? "#EFF6FF" : "#FEF9C3",
+                                color: (justClaimed || (item as any).claimed_by === currentUserId) ? "#1D4ED8" : "#854D0E",
+                                padding: "2px 8px", borderRadius: "100px",
+                              }}>
+                                {(justClaimed || (item as any).claimed_by === currentUserId) ? "✓ You've claimed this" : "Someone's getting this"}
+                              </span>
+                              {(justClaimed || (item as any).claimed_by === currentUserId) && (
+                                <button
+                                  onClick={() => unclaimItem(item.id)}
+                                  disabled={unclaimingId === item.id}
+                                  style={{
+                                    fontSize: "0.7rem", padding: "2px 8px",
+                                    background: "transparent", border: "1px solid #E5E0D8",
+                                    borderRadius: "100px", color: "#78716C",
+                                    cursor: unclaimingId === item.id ? "not-allowed" : "pointer",
+                                    fontFamily: "'DM Sans', sans-serif",
+                                  }}>
+                                  {unclaimingId === item.id ? "..." : "Unclaim"}
+                                </button>
+                              )}
+                            </div>
                           )}
                         </div>
                         <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.2rem", flexWrap: "wrap" }}>
@@ -387,6 +419,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
 
 
 
