@@ -80,7 +80,7 @@ export default function SharePage() {
 
       {/* Soft nudge banner */}
       <div style={{
-        background: "#E8622A", color: "#FFFFFF",
+        background: "#1C1917", color: "#F7F4EF",
         padding: "0.75rem 1.5rem",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         flexWrap: "wrap", gap: "0.5rem",
@@ -234,6 +234,7 @@ export default function SharePage() {
     </div>
   );
 }
+
 
 
 
