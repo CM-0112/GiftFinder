@@ -64,8 +64,8 @@ export default function SharePage() {
         body { margin: 0; }
       `}</style>
 
-      {/* Top banner */}
-      <div style={{
+      {/* Top banner — only for non-logged-in visitors */}
+      {!session && <div style={{
         background: "#1C1917", color: "#F7F4EF",
         padding: "0.75rem 1.5rem",
         display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -82,7 +82,7 @@ export default function SharePage() {
         }}>
           Join Gifting →
         </Link>
-      </div>
+      </div>}
 
       <div style={{ maxWidth: "640px", margin: "0 auto", padding: "2.5rem 1.5rem" }}>
 
@@ -227,6 +227,7 @@ export default function SharePage() {
     </div>
   );
 }
+
 
 
 
