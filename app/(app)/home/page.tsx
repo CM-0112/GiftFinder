@@ -69,6 +69,7 @@ export default function HomePage() {
       icon: "✨",
       label: "Items I've Claimed",
       sublabel: loading ? "..." : stats?.claimedCount === 0 ? "Nothing claimed yet" : `${stats?.claimedCount} item${stats?.claimedCount === 1 ? "" : "s"} claimed`,
+      note: "Only visible to you",
       cta: "View claims",
       accent: "#F5F5F5",
     },
@@ -158,12 +159,16 @@ export default function HomePage() {
               <p style={{ fontSize: "1rem", fontWeight: 500, color: "#1C1917", margin: "0 0 1rem", lineHeight: 1.3 }}>
                 {action.sublabel}
               </p>
-              <span style={{
-                fontSize: "0.8rem", color: "#E8622A",
-                display: "flex", alignItems: "center", gap: "0.25rem",
-              }}>
-                {action.cta} →
-              </span>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto" }}>
+                <span style={{ fontSize: "0.8rem", color: "#E8622A", display: "flex", alignItems: "center", gap: "0.25rem" }}>
+                  {action.cta} →
+                </span>
+                {(action as any).note && (
+                  <span style={{ fontSize: "0.7rem", color: "#A8A29E", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                    🔒 {(action as any).note}
+                  </span>
+                )}
+              </div>
             </div>
           </Link>
         ))}
@@ -276,4 +281,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 
