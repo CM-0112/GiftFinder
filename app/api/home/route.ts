@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { createServiceClient } from "@/supabase/server";
 
-// GET /api/home — fetch home page data: user stats + trending items
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user) {
@@ -13,7 +12,6 @@ export async function GET(req: NextRequest) {
   const userId: string = session.user.id;
   const supabase = createServiceClient();
 
-  // Fetch user stats in parallel
   const [
     { count: wishlistCount },
     { count: claimedCount },
@@ -34,47 +32,8 @@ export async function GET(req: NextRequest) {
       .or(`requester_id.eq.${userId},recipient_id.eq.${userId}`),
   ]);
 
-  const pendingCount = (connections ?? []).filter((c: any) =>
-    c.status === "pending" && true
-  ).length;
-
-  const confirmedCount = (connections ?? []).filter(
-    (c: any) => c.status === "connected"
-  ).length;
-
-  // Trending items — most added across all users (min 3 users, limit 20)
-  const { data: trending } = await supabase
-    .from("wishlist_items")
-    .select("name, brand, image_url, price_display")
-    .not("name", "is", null)
-    .not("brand", "is", null);
-
-  // Aggregate by name+brand in JS
-  const countMap = new Map<string, { name: string; brand: string; image_url: string | null; price_display: string | null; count: number }>();
-
-  for (const item of trending ?? []) {
-    const key = `${item.name?.toLowerCase().trim()}|${item.brand?.toLowerCase().trim()}`;
-    if (!key || key === "|") continue;
-    const existing = countMap.get(key);
-    if (existing) {
-      existing.count++;
-      // Prefer items that have images
-      if (!existing.image_url && item.image_url) existing.image_url = item.image_url;
-    } else {
-      countMap.set(key, {
-        name: item.name,
-        brand: item.brand,
-        image_url: item.image_url,
-        price_display: item.price_display,
-        count: 1,
-      });
-    }
-  }
-
-  const trendingItems = Array.from(countMap.values())
-    .filter(i => i.count >= 2) // lower threshold for early scale
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 12);
+  const pendingCount = (connections ?? []).filter((c: any) => c.status === "pending").length;
+  const confirmedCount = (connections ?? []).filter((c: any) => c.status === "connected").length;
 
   return NextResponse.json({
     stats: {
@@ -83,6 +42,6 @@ export async function GET(req: NextRequest) {
       pendingCount,
       confirmedCount,
     },
-    trending: trendingItems,
   });
 }
+

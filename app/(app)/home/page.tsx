@@ -14,18 +14,9 @@ type Stats = {
   confirmedCount: number;
 };
 
-type TrendingItem = {
-  name: string;
-  brand: string;
-  image_url: string | null;
-  price_display: string | null;
-  count: number;
-};
-
 export default function HomePage() {
   const { data: session } = useSession();
   const [stats, setStats] = useState<Stats | null>(null);
-  const [trending, setTrending] = useState<TrendingItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   // @ts-ignore
@@ -39,7 +30,6 @@ export default function HomePage() {
       if (res.ok) {
         const data = await res.json();
         setStats(data.stats);
-        setTrending(data.trending);
       }
       setLoading(false);
     }
@@ -172,17 +162,12 @@ export default function HomePage() {
             </div>
           </Link>
         ))}
-      </div>
-
-      {/* Trending section */}
-      {!loading && trending.length > 0 && (
-        <div>
-          <div style={{ display: "flex", alignItems: "baseline", gap: "0.75rem", marginBottom: "1.25rem" }}>
+      </div>>
             <h2 style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
               fontSize: "1.4rem", color: "#1C1917", fontWeight: 400, margin: 0,
             }}>
-              Trending on Gift Finder
+              Trending on Gifting
             </h2>
             <span style={{ fontSize: "0.8rem", color: "#A8A29E" }}>
               Most wanted right now
@@ -281,6 +266,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
