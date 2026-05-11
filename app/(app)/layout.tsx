@@ -62,7 +62,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {/* Logo */}
           <Link href="/home" style={{ textDecoration: "none", flexShrink: 0, display: "flex", alignItems: "center", gap: "0.4rem" }}>
             <svg width="14" height="14" viewBox="-18 -18 36 36" fill="none"><polygon points="0,-18 4,-4 18,0 4,4 0,18 -4,4 -18,0 -4,-4" fill="#E8622A"/></svg>
-            <span style={{ fontFamily: "Georgia, serif", fontSize: "1rem", fontWeight: 400, color: "#1C1917", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+            <span style={{ fontFamily: "Georgia, serif", fontSize: "1rem", fontWeight: 400, color: "#E8622A", letterSpacing: "0.12em", textTransform: "uppercase" }}>
               Gifting
             </span>
           </Link>
@@ -169,3 +169,4 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
