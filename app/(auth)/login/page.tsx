@@ -26,9 +26,10 @@ export default function LoginPage() {
           <div style={{ position: "absolute", width: "400px", height: "400px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.04)", bottom: "-150px", left: "-80px" }}/>
 
           <div style={{ position: "relative", zIndex: 1, marginBottom: "auto" }}>
-            <span className="login-tag" style={{ fontSize: "1rem", color: "#FFFFFF", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
-              ✦ Gifting
-            </span>
+            <div className="login-tag" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <svg width="14" height="14" viewBox="-18 -18 36 36" fill="none"><polygon points="0,-18 4,-4 18,0 4,4 0,18 -4,4 -18,0 -4,-4" fill="#E8622A"/></svg>
+              <span style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem", fontWeight: 400, color: "#E8622A", letterSpacing: "0.18em", textTransform: "uppercase" }}>Gifting</span>
+            </div>
           </div>
 
           <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -54,9 +55,7 @@ export default function LoginPage() {
         {/* Right / Bottom sign-in panel */}
         <div className="login-right">
           <div style={{ width: "100%", maxWidth: "360px" }}>
-            <div style={{ width: "52px", height: "52px", background: "#1C1917", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.75rem", fontSize: "1.4rem" }}>
-              🎁
-            </div>
+
             <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.85rem", color: "#1C1917", margin: "0 0 0.4rem", fontWeight: 400 }}>
               Welcome
             </h2>
@@ -157,6 +156,7 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
 

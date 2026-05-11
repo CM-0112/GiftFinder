@@ -44,7 +44,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F7F4EF" }}>
-      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E5E0D8" }}>
+      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "#1C1917", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1rem", height: "56px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
 
           {/* Mobile: hamburger on left */}
@@ -54,15 +54,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             style={{ background: "none", border: "none", cursor: "pointer", padding: "0.4rem", flexShrink: 0, lineHeight: 1 }}
             aria-label="Menu"
           >
-            <div style={{ width: "20px", height: "2px", background: "#57534E", marginBottom: "5px", borderRadius: "1px" }}/>
-            <div style={{ width: "20px", height: "2px", background: "#57534E", marginBottom: "5px", borderRadius: "1px" }}/>
-            <div style={{ width: "20px", height: "2px", background: "#57534E", borderRadius: "1px" }}/>
+            <div style={{ width: "20px", height: "2px", background: "rgba(255,255,255,0.7)", marginBottom: "5px", borderRadius: "1px" }}/>
+            <div style={{ width: "20px", height: "2px", background: "rgba(255,255,255,0.7)", marginBottom: "5px", borderRadius: "1px" }}/>
+            <div style={{ width: "20px", height: "2px", background: "rgba(255,255,255,0.7)", borderRadius: "1px" }}/>
           </button>
 
           {/* Logo */}
-          <Link href="/home" style={{ textDecoration: "none", flexShrink: 0 }}>
-            <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.1rem", color: "#1C1917" }}>
-              ✦ Gifting
+          <Link href="/home" style={{ textDecoration: "none", flexShrink: 0, display: "flex", alignItems: "center", gap: "0.4rem" }}>
+            <svg width="14" height="14" viewBox="-18 -18 36 36" fill="none"><polygon points="0,-18 4,-4 18,0 4,4 0,18 -4,4 -18,0 -4,-4" fill="#E8622A"/></svg>
+            <span style={{ fontFamily: "Georgia, serif", fontSize: "1rem", fontWeight: 400, color: "#1C1917", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+              Gifting
             </span>
           </Link>
 
@@ -74,9 +75,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <Link key={link.href} href={link.href} style={{
                   textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
                   fontSize: "0.875rem", fontWeight: active ? 500 : 400,
-                  color: active ? "#E8622A" : "#57534E",
+                  color: active ? "#E8622A" : "rgba(255,255,255,0.6)",
                   padding: "0.4rem 0.75rem", borderRadius: "8px",
-                  background: active ? "#FFF0E8" : "transparent", whiteSpace: "nowrap",
+                  background: active ? "rgba(232,98,42,0.12)" : "transparent", whiteSpace: "nowrap",
                 }}>
                   {link.label}
                 </Link>
@@ -88,7 +89,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <div style={{ position: "relative", flexShrink: 0 }}>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              style={{ display: "flex", alignItems: "center", gap: "0.4rem", background: "none", border: "1px solid #E5E0D8", borderRadius: "100px", padding: "0.25rem 0.5rem 0.25rem 0.25rem", cursor: "pointer" }}
+              style={{ display: "flex", alignItems: "center", gap: "0.4rem", background: "none", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "100px", padding: "0.25rem 0.5rem 0.25rem 0.25rem", cursor: "pointer" }}
             >
               {avatarUrl ? (
                 <img src={avatarUrl} alt={username} style={{ width: "26px", height: "26px", borderRadius: "50%", objectFit: "cover" }} />
@@ -168,4 +169,3 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
