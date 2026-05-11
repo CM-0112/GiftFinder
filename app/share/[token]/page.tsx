@@ -80,7 +80,7 @@ export default function SharePage() {
 
       {/* Soft nudge banner */}
       <div style={{
-        background: "#1C1917", color: "#F7F4EF",
+        background: "#E8622A", color: "#FFFFFF",
         padding: "0.75rem 1.5rem",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         flexWrap: "wrap", gap: "0.5rem",
@@ -218,7 +218,7 @@ export default function SharePage() {
           </p>
           <Link href="/login" style={{
             display: "inline-block", padding: "0.65rem 1.5rem",
-            background: "#1C1917", color: "#F7F4EF", textDecoration: "none",
+            background: "#E8622A", color: "#FFFFFF", textDecoration: "none",
             borderRadius: "10px", fontSize: "0.875rem", fontWeight: 500,
             fontFamily: "'DM Sans', sans-serif",
           }}>
@@ -234,6 +234,7 @@ export default function SharePage() {
     </div>
   );
 }
+
 
 
 
