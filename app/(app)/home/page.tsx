@@ -162,110 +162,17 @@ export default function HomePage() {
             </div>
           </Link>
         ))}
-      </div>>
-            <h2 style={{
-              fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: "1.4rem", color: "#1C1917", fontWeight: 400, margin: 0,
-            }}>
-              Trending on Gifting
-            </h2>
-            <span style={{ fontSize: "0.8rem", color: "#A8A29E" }}>
-              Most wanted right now
-            </span>
-          </div>
-
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-            gap: "0.75rem",
-          }}
-            className="trending-grid"
-          >
-            {trending.map((item, i) => (
-              <div key={i} style={{
-                background: "#FFFFFF",
-                border: "1px solid #E5E0D8",
-                borderRadius: "14px",
-                overflow: "hidden",
-                transition: "box-shadow 0.2s",
-              }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.07)";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                }}
-              >
-                {/* Image */}
-                <div style={{
-                  width: "100%", aspectRatio: "1",
-                  background: "#F7F4EF",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  overflow: "hidden",
-                }}>
-                  {item.image_url ? (
-                    <img
-                      src={item.image_url}
-                      alt={item.name}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                      onError={e => {
-                        const el = e.target as HTMLImageElement;
-                        el.style.display = "none";
-                        (el.parentElement as HTMLElement).innerHTML = '<span style="font-size:2rem">🎁</span>';
-                      }}
-                    />
-                  ) : (
-                    <span style={{ fontSize: "2rem" }}>🎁</span>
-                  )}
-                </div>
-
-                {/* Info */}
-                <div style={{ padding: "0.75rem" }}>
-                  <p style={{
-                    fontSize: "0.825rem", fontWeight: 500, color: "#1C1917",
-                    margin: "0 0 0.2rem", lineHeight: 1.3,
-                    overflow: "hidden", display: "-webkit-box",
-                    WebkitLineClamp: 2, WebkitBoxOrient: "vertical",
-                  }}>
-                    {item.name}
-                  </p>
-                  {item.brand && (
-                    <p style={{ fontSize: "0.75rem", color: "#A8A29E", margin: "0 0 0.4rem" }}>
-                      {item.brand}
-                    </p>
-                  )}
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    {item.price_display && (
-                      <span style={{ fontSize: "0.78rem", fontWeight: 500, color: "#78716C" }}>
-                        {item.price_display}
-                      </span>
-                    )}
-                    <span style={{
-                      fontSize: "0.7rem", color: "#A8A29E",
-                      background: "#FFF0E8", color: "#E8622A", padding: "2px 6px", borderRadius: "100px",
-                      marginLeft: "auto",
-                    }}>
-                      {item.count} {item.count === 1 ? "person" : "people"}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Empty trending state — hidden per PRD */}
+      </div>
 
       <style>{`
         @media (max-width: 600px) {
           .quick-actions { grid-template-columns: 1fr !important; }
-          .trending-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </div>
   );
 }
+
 
 
 
