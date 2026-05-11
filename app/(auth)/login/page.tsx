@@ -129,7 +129,7 @@ export default function LoginPage() {
           .login-left {
             flex: none;
             min-height: auto;
-            padding: 2.5rem 1.5rem 3rem;
+            padding: 3rem 1.5rem 3.5rem;
           }
           .login-left > div:last-child {
             display: none;
@@ -155,6 +155,7 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
 

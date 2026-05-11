@@ -204,16 +204,16 @@ export default function SharePage() {
         {/* Bottom nudge */}
         <div style={{
           marginTop: "3rem", textAlign: "center",
-          padding: "1.5rem", background: "#FFFFFF",
-          borderRadius: "14px", border: "1px solid #E5E0D8",
+          padding: "1.5rem", background: "#1C1917",
+          borderRadius: "14px",
         }}>
           <p style={{
             fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: "1.1rem", color: "#1C1917", fontWeight: 400, margin: "0 0 0.75rem",
+            fontSize: "1.1rem", color: "#FFFFFF", fontWeight: 400, margin: "0 0 0.75rem",
           }}>
             Create your own wishlist
           </p>
-          <p style={{ color: "#78716C", fontSize: "0.85rem", margin: "0 0 1rem" }}>
+          <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.85rem", margin: "0 0 1rem" }}>
             Share what you want. Gift with confidence.
           </p>
           <Link href="/login" style={{
@@ -234,6 +234,7 @@ export default function SharePage() {
     </div>
   );
 }
+
 
 
 
