@@ -65,8 +65,11 @@ export default function SharePage() {
 
   const { user, items } = data;
   // @ts-ignore
-  const currentUsername = session?.user?.username ?? "";
-  const isOwner = currentUsername === user.username;
+  // @ts-ignore
+  const currentUserId = (session?.user as any)?.id ?? "";
+  // @ts-ignore  
+  const currentUsername = (session?.user as any)?.username ?? "";
+  const isOwner = (currentUserId && currentUserId === user.id) || (currentUsername && currentUsername === user.username);
   const displayName = user.display_name ?? user.username;
   const initials = displayName.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase();
   const unclaimed = items.filter(i => !i.claimed);
@@ -229,5 +232,6 @@ export default function SharePage() {
     </div>
   );
 }
+
 
 

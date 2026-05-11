@@ -122,7 +122,7 @@ export default function ProfilePage() {
     });
     if (res.ok) {
       setItems(prev => prev.map(i => i.id === itemId ? { ...i, claimed: false, claimed_at: null, claimed_by: null } : i));
-      setClaimedIds(prev => prev.filter((id: string) => id !== itemId));
+      setClaimedIds(prev => new Set([...prev].filter((id: string) => id !== itemId)));
     }
     setUnclaimingId(null);
   }
@@ -408,6 +408,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
 
 
 
