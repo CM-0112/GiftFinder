@@ -68,11 +68,19 @@ export default function GiftsGivingPage() {
         }}>
           Items I've Claimed
         </h1>
-        <p style={{ color: "#78716C", fontSize: "0.9rem", margin: 0 }}>
+        <p style={{ color: "#78716C", fontSize: "0.9rem", margin: "0 0 0.75rem" }}>
           {items.length === 0
             ? "Items you've claimed from friends' wishlists."
             : `${items.length} item${items.length === 1 ? "" : "s"} claimed across ${Object.keys(grouped).length} ${Object.keys(grouped).length === 1 ? "person" : "people"}`}
         </p>
+        <div style={{
+          display: "inline-flex", alignItems: "center", gap: "0.4rem",
+          background: "#F7F4EF", border: "1px solid #E5E0D8",
+          borderRadius: "100px", padding: "0.35rem 0.85rem",
+          fontSize: "0.78rem", color: "#78716C",
+        }}>
+          🔒 Only visible to you — the people you're gifting can't see this
+        </div>
       </div>
 
       {/* Loading */}
@@ -201,6 +209,7 @@ export default function GiftsGivingPage() {
     </div>
   );
 }
+
 
 
 
