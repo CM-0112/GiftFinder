@@ -56,7 +56,7 @@ export default function SharePage() {
         <p style={{ color: "#78716C", fontSize: "0.9rem", margin: "0 0 1.5rem" }}>
           This link may have expired or been removed.
         </p>
-        <Link href="/" style={{ color: "#1C1917", fontSize: "0.9rem" }}>Go to Gift Finder →</Link>
+        <Link href="/" style={{ color: "#1C1917", fontSize: "0.9rem" }}>Go to Gifting →</Link>
       </div>
     );
   }
@@ -94,7 +94,7 @@ export default function SharePage() {
           borderRadius: "100px", textDecoration: "none", whiteSpace: "nowrap",
           border: "1px solid rgba(255,255,255,0.2)",
         }}>
-          Join Gift Finder →
+          Join Gifting →
         </Link>
       </div>
 
@@ -214,7 +214,7 @@ export default function SharePage() {
             Create your own wishlist
           </p>
           <p style={{ color: "#78716C", fontSize: "0.85rem", margin: "0 0 1rem" }}>
-            Share what you want. No more duplicate gifts.
+            Share what you want. Gift with confidence.
           </p>
           <Link href="/login" style={{
             display: "inline-block", padding: "0.65rem 1.5rem",
@@ -234,6 +234,7 @@ export default function SharePage() {
     </div>
   );
 }
+
 
 
 

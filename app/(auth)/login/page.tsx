@@ -27,14 +27,11 @@ export default function LoginPage() {
 
           <div style={{ position: "relative", zIndex: 1, marginBottom: "auto" }}>
             <span style={{ fontSize: "1rem", color: "#FFFFFF", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
-              ✦ Gift Finder
+              ✦ Gifting
             </span>
           </div>
 
           <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <p style={{ fontSize: "0.8rem", color: "#E8622A", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
-              The art of gifting
-            </p>
             <h1 style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
@@ -158,6 +155,7 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
 
