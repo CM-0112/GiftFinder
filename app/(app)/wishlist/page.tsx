@@ -385,7 +385,7 @@ export default function WishlistPage() {
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
                 {item.product_url && (
                   <a href={item.product_url} target="_blank" rel="noopener noreferrer"
-                    style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "8px", border: "1px solid #E5E0D8", color: "#78716C", textDecoration: "none" }}>
+                    style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "8px", border: "1px solid #E5E0D8", color: "#78716C", textDecoration: "none", WebkitAppearance: "none" }}>
                     ↗
                   </a>
                 )}
