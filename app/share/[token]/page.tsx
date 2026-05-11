@@ -195,8 +195,8 @@ export default function SharePage() {
               </div>
             )}
 
-            {/* Bottom CTA — only show to non-owners */}
-            {!isOwner && (
+            {/* Bottom CTA — only show to non-logged-in visitors */}
+            {!session && (
               <div style={{
                 marginTop: "3rem", padding: "2rem",
                 background: "#FFFFFF", borderRadius: "16px",
@@ -227,6 +227,7 @@ export default function SharePage() {
     </div>
   );
 }
+
 
 
 
