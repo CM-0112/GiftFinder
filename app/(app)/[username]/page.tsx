@@ -349,14 +349,16 @@ export default function ProfilePage() {
                                 <button
                                   onClick={() => unclaimItem(item.id)}
                                   disabled={unclaimingId === item.id}
+                                  title="Unclaim"
                                   style={{
-                                    fontSize: "0.7rem", padding: "2px 8px",
+                                    width: "22px", height: "22px", display: "flex",
+                                    alignItems: "center", justifyContent: "center",
                                     background: "transparent", border: "1px solid #E5E0D8",
-                                    borderRadius: "100px", color: "#78716C",
+                                    borderRadius: "6px",
+                                    color: unclaimingId === item.id ? "#A8A29E" : "#EF4444",
                                     cursor: unclaimingId === item.id ? "not-allowed" : "pointer",
-                                    fontFamily: "'DM Sans', sans-serif",
                                   }}>
-                                  {unclaimingId === item.id ? "..." : "Unclaim"}
+                                  {unclaimingId === item.id ? "..." : <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L7 7L12 12M12 2L7 7L2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                                 </button>
                               )}
                             </div>
@@ -419,6 +421,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
 
 
 
