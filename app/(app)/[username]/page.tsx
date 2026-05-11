@@ -345,22 +345,7 @@ export default function ProfilePage() {
                               }}>
                                 {(justClaimed || (item as any).claimed_by === currentUserId) ? "✓ You've claimed this" : "Someone's getting this"}
                               </span>
-                              {(justClaimed || (item as any).claimed_by === currentUserId) && (
-                                <button
-                                  onClick={() => unclaimItem(item.id)}
-                                  disabled={unclaimingId === item.id}
-                                  title="Unclaim"
-                                  style={{
-                                    width: "22px", height: "22px", display: "flex",
-                                    alignItems: "center", justifyContent: "center",
-                                    background: "transparent", border: "1px solid #E5E0D8",
-                                    borderRadius: "6px",
-                                    color: unclaimingId === item.id ? "#A8A29E" : "#EF4444",
-                                    cursor: unclaimingId === item.id ? "not-allowed" : "pointer",
-                                  }}>
-                                  {unclaimingId === item.id ? "..." : <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L7 7L12 12M12 2L7 7L2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                                </button>
-                              )}
+
                             </div>
                           )}
                         </div>

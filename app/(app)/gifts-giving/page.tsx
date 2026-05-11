@@ -79,7 +79,7 @@ export default function GiftsGivingPage() {
           borderRadius: "100px", padding: "0.35rem 0.85rem",
           fontSize: "0.78rem", color: "#78716C",
         }}>
-          🔒 Only visible to you — the people you're gifting can't see this
+          🔒 Only visible to you — the people you're gifting can't see that you've claimed an item from their list
         </div>
       </div>
 
@@ -209,6 +209,7 @@ export default function GiftsGivingPage() {
     </div>
   );
 }
+
 
 
 
