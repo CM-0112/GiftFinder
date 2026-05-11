@@ -73,8 +73,23 @@ export async function PATCH(
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
+  // Allow claimer to unclaim their own claim
+  if (body.claimed === false) {
+    if (item.claimed_by !== userId) {
+      return NextResponse.json({ error: "You can only unclaim items you claimed" }, { status: 403 });
+    }
+    const { data, error } = await supabase
+      .from("wishlist_items")
+      .update({ claimed: false, claimed_at: null, claimed_by: null })
+      .eq("id", params.id)
+      .select()
+      .single();
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(data);
+  }
+
   if (body.claimed !== true) {
-    return NextResponse.json({ error: "Connected users may only claim items" }, { status: 403 });
+    return NextResponse.json({ error: "Connected users may only claim or unclaim items" }, { status: 403 });
   }
 
   if (item.claimed) {
@@ -128,4 +143,5 @@ export async function DELETE(
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return new NextResponse(null, { status: 204 });
 }
+
 

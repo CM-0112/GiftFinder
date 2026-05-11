@@ -61,7 +61,7 @@ export default function HomePage() {
       label: "Connections",
       sublabel: loading ? "..." : `${stats?.confirmedCount ?? 0} connection${stats?.confirmedCount === 1 ? "" : "s"}${stats?.pendingCount ? ` · ${stats.pendingCount} pending` : ""}`,
       cta: "View connections",
-      accent: "#F5F5F5",
+      accent: "#FFF0E8",
       badge: stats?.pendingCount ?? 0,
     },
     {
@@ -71,7 +71,7 @@ export default function HomePage() {
       sublabel: loading ? "..." : stats?.claimedCount === 0 ? "Nothing claimed yet" : `${stats?.claimedCount} item${stats?.claimedCount === 1 ? "" : "s"} claimed`,
       note: "Only visible to you",
       cta: "View claims",
-      accent: "#F5F5F5",
+      accent: "#FFF0E8",
     },
   ];
 
@@ -281,6 +281,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
