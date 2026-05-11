@@ -127,7 +127,9 @@ export default function SharePage() {
               {displayName}'s Wishlist
             </h1>
             <p style={{ color: "#A8A29E", fontSize: "0.875rem", margin: 0 }}>
-              {unclaimed.length} available · {claimed.length} claimed
+              {isOwner
+                ? `${items.length} item${items.length === 1 ? "" : "s"}`
+                : `${unclaimed.length} available · ${claimed.length} claimed`}
             </p>
           </div>
         </div>
@@ -160,7 +162,7 @@ export default function SharePage() {
                 background: "#FFFFFF", border: "1px solid #E5E0D8",
                 borderRadius: "14px", padding: "1.1rem 1.25rem",
                 display: "flex", alignItems: "center", gap: "1rem",
-                opacity: (item.claimed && !isOwner) ? 0.55 : 1,
+                
               }}>
                 <ItemImage src={item.image_url} alt={item.name} size={56} />
 

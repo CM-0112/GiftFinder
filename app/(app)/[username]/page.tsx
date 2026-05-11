@@ -326,7 +326,7 @@ export default function ProfilePage() {
                       background: "#FFFFFF", border: "1px solid #E5E0D8",
                       borderRadius: "14px", padding: "1.1rem 1.25rem",
                       display: "flex", alignItems: "center", gap: "1rem",
-                      opacity: item.claimed ? 0.55 : 1, transition: "opacity 0.2s",
+                       transition: "opacity 0.2s",
                     }}>
                       <ItemImage src={item.image_url} alt={item.name} size={56} />
 
@@ -408,6 +408,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
 
 
 
