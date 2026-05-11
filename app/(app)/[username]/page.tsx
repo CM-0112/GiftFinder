@@ -121,8 +121,8 @@ export default function ProfilePage() {
       body: JSON.stringify({ claimed: false }),
     });
     if (res.ok) {
-      setItems(prev => prev.map(i => i.id === itemId ? { ...i, claimed: false } : i));
-      setClaimedIds(prev => prev.filter(id => id !== itemId));
+      setItems(prev => prev.map(i => i.id === itemId ? { ...i, claimed: false, claimed_at: null, claimed_by: null } : i));
+      setClaimedIds(prev => prev.filter((id: string) => id !== itemId));
     }
     setUnclaimingId(null);
   }
@@ -359,24 +359,26 @@ export default function ProfilePage() {
                       <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", flexShrink: 0 }}>
                         {item.product_url && (
                           <a href={item.product_url} target="_blank" rel="noopener noreferrer"
-                            style={{
-                              width: "32px", height: "32px", display: "flex",
-                              alignItems: "center", justifyContent: "center",
-                              borderRadius: "8px", border: "1px solid #E5E0D8",
-                              color: "#78716C", textDecoration: "none", fontSize: "0.9rem",
-                            }}>↗</a>
+                            style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "8px", border: "1px solid #E5E0D8", color: "#78716C", textDecoration: "none" }}>
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                          </a>
                         )}
-                        {/* Only show claim button for connected gift-givers, not own profile */}
+                        {/* Unclaim button — shown if this viewer claimed the item */}
+                        {viewState === "connected" && item.claimed && (justClaimed || (item as any).claimed_by === currentUserId) && (
+                          <button
+                            onClick={() => unclaimItem(item.id)}
+                            disabled={unclaimingId === item.id}
+                            title="Unclaim"
+                            style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "8px", border: "1px solid #E5E0D8", background: "transparent", color: unclaimingId === item.id ? "#A8A29E" : "#EF4444", cursor: unclaimingId === item.id ? "not-allowed" : "pointer" }}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L7 7L12 12M12 2L7 7L2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                          </button>
+                        )}
+                        {/* Claim button — shown for unclaimed items */}
                         {viewState === "connected" && !item.claimed && (
                           <button
                             onClick={() => claimItem(item.id)}
                             disabled={claimingId === item.id}
-                            style={{
-                              padding: "0.35rem 0.85rem", background: "#1C1917",
-                              color: "#F7F4EF", border: "none", borderRadius: "8px",
-                              fontSize: "0.78rem", fontFamily: "'DM Sans', sans-serif",
-                              fontWeight: 500, cursor: claimingId === item.id ? "not-allowed" : "pointer",
-                            }}>
+                            style={{ padding: "0.35rem 0.85rem", background: "#1C1917", color: "#F7F4EF", border: "none", borderRadius: "8px", fontSize: "0.78rem", fontFamily: "'DM Sans', sans-serif", fontWeight: 500, cursor: claimingId === item.id ? "not-allowed" : "pointer" }}>
                             {claimingId === item.id ? "..." : "I'll get this"}
                           </button>
                         )}
@@ -406,6 +408,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
 
 
 
