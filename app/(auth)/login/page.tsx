@@ -26,7 +26,7 @@ export default function LoginPage() {
           <div style={{ position: "absolute", width: "400px", height: "400px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.04)", bottom: "-150px", left: "-80px" }}/>
 
           <div style={{ position: "relative", zIndex: 1, marginBottom: "auto" }}>
-            <span style={{ fontSize: "1rem", color: "#FFFFFF", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
+            <span className="login-tag" style={{ fontSize: "1rem", color: "#FFFFFF", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
               ✦ Gifting
             </span>
           </div>
@@ -122,7 +122,9 @@ export default function LoginPage() {
           padding: 3rem 2rem;
         }
 
+        .login-tag { display: block; margin-bottom: 0; }
         @media (max-width: 680px) {
+          .login-tag { margin-bottom: 2rem; }
           .login-container {
             flex-direction: column;
           }
@@ -155,6 +157,7 @@ function GoogleIcon() {
     </svg>
   );
 }
+
 
 
 
